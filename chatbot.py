@@ -1,27 +1,35 @@
+# Importing all the necessary libraries
 import speech_recognition as sr
 import pyttsx3
 import datetime
 import wikipedia
 import webbrowser
 import time
-import subprocess
-from ecapture import ecapture as ec
-import wolframalpha
 import requests
 
 
-print('Loading your AI personal assistant - G One')
+print('Loading your personal humanoid - Prisma')
 
-engine=pyttsx3.init()
+# Initiate the voice engine using pyttsx3
+engine=pyttsx3.init('sapi5') 
+
+'''engine=pyttsx3.init()
+   - For MAC and Linux, as 'sapi5' is the default voice engine for Microsoft windows.
+   - For linux, you also need to install libespeak using-
+     sudo apt-get install libespeak (Example for Debian distros)
+'''
+
 voices=engine.getProperty('voices')
-engine.setProperty('voice','voices[1].id')
+engine.setProperty('voice',voices[0].id) # 0 for male, 1 for female
 
 
 def speak(text):
+    '''Speaks the string given as the parameter'''
     engine.say(text)
     engine.runAndWait()
 
 def wishMe():
+    '''greetings based on the time of the day'''
     hour=datetime.datetime.now().hour
     if hour>=0 and hour<12:
         speak("Hello,Good Morning")
@@ -33,7 +41,9 @@ def wishMe():
         speak("Hello,Good Evening")
         print("Hello,Good Evening")
 
+        
 def takeCommand():
+    '''Defines the input (microphone)'''
     r=sr.Recognizer()
     with sr.Microphone() as source:
         r.adjust_for_ambient_noise(source)
@@ -41,33 +51,31 @@ def takeCommand():
         audio=r.listen(source)
 
         try:
-            statement=r.recognize_google(audio,language='en-in')
-            print(f"user said:{statement}\n")
+            statement=r.recognize_google(audio,language='en-in') # Convert speech to text
+            print(f"User said: {statement}\n")
 
         except Exception as e:
             speak("Pardon me, please say that again")
             return "None"
         return statement
 
-speak("Loading your AI personal assistant G-One")
+speak("Loading your personal humanoid Prisma")
 wishMe()
 
-
+# Main program
 if __name__=='__main__':
 
-
+    # Loop to keep the assistant on
     while True:
         speak("Tell me how can I help you now?")
-        statement = takeCommand().lower()
+        statement = takeCommand().lower() # Take command
         if statement==0:
             continue
 
-        if "good bye" in statement or "ok bye" in statement or "stop" in statement:
-            speak('your personal assistant G-one is shutting down,Good bye')
-            print('your personal assistant G-one is shutting down,Good bye')
+        if "goodbye" in statement or "ok bye" in statement or "stop" in statement:
+            speak('your personal humanoid Prisma is shutting down, Good bye')
+            print('your personal humanoid is shutting down, Good bye')
             break
-
-
 
         if 'wikipedia' in statement:
             speak('Searching Wikipedia...')
@@ -102,41 +110,39 @@ if __name__=='__main__':
             x=response.json()
             if x["cod"]!="404":
                 y=x["main"]
-                current_temperature = y["temp"]
-                current_humidiy = y["humidity"]
+                current_temperature = y["temp"] - 273
+                current_humidity = y["humidity"]
                 z = x["weather"]
                 weather_description = z[0]["description"]
-                speak(" Temperature in kelvin unit is " +
-                      str(current_temperature) +
-                      "\n humidity in percentage is " +
-                      str(current_humidiy) +
+                speak(" Temperature is " +
+                      str(current_temperature) + " degrees celsius" +
+                      "\n The humidity is " +
+                      str(current_humidity) + " percentage"
                       "\n description  " +
                       str(weather_description))
-                print(" Temperature in kelvin unit = " +
+                print(" Temperature in celsius unit = " +
                       str(current_temperature) +
                       "\n humidity (in percentage) = " +
-                      str(current_humidiy) +
+                      str(current_humidity) +
                       "\n description = " +
                       str(weather_description))
 
             else:
                 speak(" City Not Found ")
 
-
-
         elif 'time' in statement:
             strTime=datetime.datetime.now().strftime("%H:%M:%S")
             speak(f"the time is {strTime}")
 
         elif 'who are you' in statement or 'what can you do' in statement:
-            speak('I am G-one version 1 point O your persoanl assistant. I am programmed to minor tasks like'
-                  'opening youtube,google chrome,gmail and stackoverflow ,predict time,take a photo,search wikipedia,predict weather' 
-                  'in different cities , get top headline news from times of india and you can ask me computational or geographical questions too!')
+            speak('I am Prisma version 1, your persoanl humanoid. I am programmed to do minor tasks like'
+                  'opening youtube,google chrome,gmail and stackoverflow ,predict time,search wikipedia,predict weather' 
+                  'in different cities , get top headline news from times of india and much much more!')
 
 
         elif "who made you" in statement or "who created you" in statement or "who discovered you" in statement:
-            speak("I was built by Mirthula")
-            print("I was built by Mirthula")
+            speak("I was built by HumanoidX")
+            print("I was built by HumanoidX")
 
         elif "open stackoverflow" in statement:
             webbrowser.open_new_tab("https://stackoverflow.com/login")
@@ -147,27 +153,9 @@ if __name__=='__main__':
             speak('Here are some headlines from the Times of India,Happy reading')
             time.sleep(6)
 
-        elif "camera" in statement or "take a photo" in statement:
-            ec.capture(0,"robo camera","img.jpg")
-
         elif 'search'  in statement:
             statement = statement.replace("search", "")
             webbrowser.open_new_tab(statement)
             time.sleep(5)
-
-        elif 'ask' in statement:
-            speak('I can answer to computational and geographical questions and what question do you want to ask now')
-            question=takeCommand()
-            app_id="R2K75H-7ELALHR35X"
-            client = wolframalpha.Client('R2K75H-7ELALHR35X')
-            res = client.query(question)
-            answer = next(res.results).text
-            speak(answer)
-            print(answer)
-
-
-        elif "log off" in statement or "sign out" in statement:
-            speak("Ok , your pc will log off in 10 sec make sure you exit from all applications")
-            subprocess.call(["shutdown", "/l"])
 
 time.sleep(3)
