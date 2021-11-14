@@ -8,7 +8,7 @@ We will implement the 3 most basic and important features in a humanoid:-
 
 <br>
 
-#### **NAVIGATION**
+## **NAVIGATION**
 
 ```A humanoid is a non-human entity with human form and chareteristics.```
 
@@ -162,7 +162,7 @@ Now, we will have a 10 minutes break for you to clarify your doubts and then we 
 
 <br>
 
-#### **FACE DETECTION**
+## **FACE DETECTION**
 
 Hope y'all have your **VSCode** with **python** set-up and running.
 
@@ -225,7 +225,10 @@ These features on the image makes it easy to find out the edges or the lines in 
 
 ```We make this haar feature traverse through the entire picture and extract the distinct edges and lines from it. The objective here is to find out the sum of all the image pixels lying in the darker area of the haar feature and the sum of all the image pixels lying in the lighter area of the haar feature.```
 
-Naturally, all images with a face or faces will have somewhat similar edges and features and will be very distinct from images that won't have a face. 
+Naturally, all images with a face or faces will have somewhat similar edges and features and will be very distinct from images that won't have a face.
+
+A very detailed explanation on what exactly happens in Haar-cascade is given here 👇🏻
+https://towardsdatascience.com/face-detection-with-haar-cascade-727f68dafd08
 
 As you may have guessed, for these kind of applications we need HUGE amounts of data... and am talking about datasets more than 5GBs or so, or else our model won't predict accurately.
 
@@ -290,7 +293,7 @@ So, now that we have implemented our face detection program, let's have a 10 min
 
 <br>
 
-#### **VIRTUAL ASSISTANT**
+## **VIRTUAL ASSISTANT**
 
 The most distinct feature of a humanoid is that it behaves somewhat like a human and what better way is there to show something to be similar to humans than being able to talk and speak in an intelligent way.
 
