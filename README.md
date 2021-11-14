@@ -508,3 +508,8 @@ So there you go! We have given our humanoid the ability to understand us on a ve
 
 So, that's it for this workshop! We obviously haven't shown you how to make your own body, but have some patience for **Prismanoid v2.0** where we gonna explain how you can design the body of a full-fledged humanoid!
 Stay tuned to our instagram channel for more awesome workshops like this one and till then, stay safe and keep innovating!
+<br>
+## 🔗 Links
+
+[![instagram](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/humanoidx.vitcc/)
+[![linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/company/humanoidxvitcc/mycompany/)
