@@ -20,9 +20,6 @@ Well the basic principle that we are going to apply for an autonomous movement i
 
 Since, detecting a point where it needs to go and then moving up to that point in an unknown environment requires higher-level concepts like **SLAM(Simultaneous Localization And Mapping)** to be integrated with the navigation system which is out of the scope of this workshop, what we are gonna do is that we are going to make a fully autonomous navigation system that will make our humanoid move on its own by avoiding obstacles in its path.
 
-So without further ado, let's get going!
-
-I hope y'all have your **tinkercad circuits** up and running. Create a new board and let's start collecting our components.
 
 **Components**:-
 
@@ -62,7 +59,6 @@ So now that we know about our components, let's assemble our circuit in tinkerca
 
 ![](images/tinkercad.png)
 
-Now that we have assembled our circuit let's code our Arduino!
 
 ```c++
 
