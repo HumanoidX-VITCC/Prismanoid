@@ -64,46 +64,43 @@ So now that we know about our components, let's assemble our circuit in tinkerca
 
 Now that we have assembled our circuit let's code our Arduino!
 
-```c
+```c++
 
-/* Setting the variables */
 int trigger_pin = 6;
 int echo_pin = 3;
-int in1=2;
-int in2=5;
+int Rear_Left_Back=2;
+int Rear_Left_Front=5;
 
-int in3=10;
-int in4=12;
+int Rear_Right_Front=10;
+int Rear_Right_Back=12;
 
-int in5=4;
-int in6=7;
+int Front_Left_Back=4;
+int Front_Left_Front=7;
 
-int in7=8;
-int in8=13;
+int Front_Right_Front=8;
+int Front_Right_Back=13;
 int distance;
 
 int time;
 
-/* Function setting up pin functionalities */
-void setup(){
-    
-  	Serial.begin(9600);
-  	pinMode(trigger_pin, OUTPUT);
-  	pinMode(echo_pin, INPUT);
+void setup()
+{
+  Serial.begin(9600);
+  pinMode(trigger_pin, OUTPUT);
+  pinMode(echo_pin, INPUT);
   
-  	pinMode(in1, OUTPUT);
-  	pinMode(in2, OUTPUT);
-  	pinMode(in3, OUTPUT);
-  	pinMode(in4, OUTPUT);
+  pinMode(Rear_Left_Back, OUTPUT);
+  pinMode(Rear_Left_Front, OUTPUT);
+  pinMode(Rear_Right_Front, OUTPUT);
+  pinMode(Rear_Right_Back, OUTPUT);
   
-  	pinMode(in5, OUTPUT);
-  	pinMode(in6, OUTPUT);
-    pinMode(in7, OUTPUT);
-    pinMode(in8, OUTPUT);
+  pinMode(Front_Left_Back, OUTPUT);
+  pinMode(Front_Left_Front, OUTPUT);
+  pinMode(Front_Right_Front, OUTPUT);
+  pinMode(Front_Right_Back, OUTPUT);
   
 }
 
-/* Main program loop */
 void loop(){
   
     digitalWrite (trigger_pin, HIGH);
@@ -115,44 +112,42 @@ void loop(){
     time = pulseIn (echo_pin, HIGH);
 
     distance = (time * 0.034) / 2;
-    
+  
     if(distance >= 50){
-        
-          Serial.println("objection not  detected");
+      
+          Serial.println("object not detected");
           Serial.print("Distance=");
           Serial.println(distance);
-        
-          digitalWrite(in1,HIGH);
-          digitalWrite(in2,LOW);
-          digitalWrite(in3,HIGH);
-          digitalWrite(in4,LOW);
+          digitalWrite(Rear_Left_Back,HIGH);
+          digitalWrite(Rear_Left_Front,LOW);
+          digitalWrite(Rear_Right_Front,HIGH);
+          digitalWrite(Rear_Right_Back,LOW);
           
-          digitalWrite(in5,HIGH);
-          digitalWrite(in6,LOW);
-          digitalWrite(in7,HIGH);
-          digitalWrite(in8,LOW);
+          digitalWrite(Front_Left_Back,HIGH);
+          digitalWrite(Front_Left_Front,LOW);
+          digitalWrite(Front_Right_Front,HIGH);
+          digitalWrite(Front_Right_Back,LOW);
           
           delay(500);
     }
   
-  	else{
-        
-          Serial.println("objection not detected");
-          Serial.print("Distance=");
+  else{
+    
+          Serial.println("object detected");
+          Serial.print("Distance = ");
           Serial.println(distance);
-        
-          digitalWrite(in1,LOW);
-          digitalWrite(in2,LOW);
-          digitalWrite(in3,LOW);
-          digitalWrite(in4,LOW);
-                
-          digitalWrite(in5,LOW);
-          digitalWrite(in6,LOW);
-          digitalWrite(in7,LOW);
-          digitalWrite(in8,LOW);
-         
+    
+          digitalWrite(Rear_Left_Back,LOW);
+          digitalWrite(Rear_Left_Front,LOW);
+          digitalWrite(Rear_Right_Front,LOW);
+          digitalWrite(Rear_Right_Back,LOW);
+          digitalWrite(Front_Left_Back,LOW);
+          digitalWrite(Front_Left_Front,LOW);
+          digitalWrite(Front_Right_Front,LOW);
+          digitalWrite(Front_Right_Back,LOW);
+    
           delay(500);
-  	}
+  }
 }
 ```
 
@@ -172,7 +167,7 @@ First and foremost, we need to make a python *virtual environment*.
 
 Make a new folder *Prismanoid* and open this folder in **VSCode**.
 
-Press ```ctrl + shift + ~``` to bring up the terminal.
+Open a new terminal from the toolbar.
 
 We will be using the official Python package manager called **pip**
 
