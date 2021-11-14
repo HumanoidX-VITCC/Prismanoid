@@ -11,7 +11,7 @@ import requests
 print('Loading your personal humanoid - Prisma')
 
 # Initiate the voice engine using pyttsx3
-engine=pyttsx3.init('sapi5') 
+engine=pyttsx3.init() 
 
 '''engine=pyttsx3.init()
    - For MAC and Linux, as 'sapi5' is the default voice engine for Microsoft windows.
@@ -70,7 +70,7 @@ if __name__=='__main__':
         speak("Tell me how can I help you now?")
         statement = takeCommand().lower() # Take command
         if statement==0:
-            continue
+            continue 
 
         if "goodbye" in statement or "ok bye" in statement or "stop" in statement:
             speak('your personal humanoid Prisma is shutting down, Good bye')
@@ -96,14 +96,14 @@ if __name__=='__main__':
             time.sleep(5)
 
         elif 'open gmail' in statement:
-            webbrowser.open_new_tab("gmail.com")
+            webbrowser.open_new_tab("https://www.gmail.com")
             speak("Google Mail open now")
             time.sleep(5)
 
         elif "weather" in statement:
             api_key="8ef61edcf1c576d65d836254e11ea420"
             base_url="https://api.openweathermap.org/data/2.5/weather?"
-            speak("whats the city name")
+            speak("What's the city name")
             city_name=takeCommand()
             complete_url=base_url+"appid="+api_key+"&q="+city_name
             response = requests.get(complete_url)
