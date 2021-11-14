@@ -159,8 +159,6 @@ Now, we will have a 10 minutes break for you to clarify your doubts and then we 
 
 ## **FACE DETECTION**
 
-Hope y'all have your **VSCode** with **python** set-up and running.
-
 First and foremost, we need to make a python *virtual environment*.
 
 ```Python applications use many different modules like OpenCV, flask and Tensorflow for extended and key functionalities that do not come pre-bundled inside the Python installation. That's why we need to download these packages using a package manager like pip. But, it often so happens that the dependency versions for one application does not suit that of the other and causes loads and loads of problems. That's where virtual environments come to our rescue. A virtual environment basically lets you isolate your project from your other projects in your system so that you don't have any dependency conflicts. It's highly recommended you always use a virtual environment for any python application you are making. ```
@@ -200,10 +198,6 @@ We will only need 2 dependancies:-
   pip install opencv-python
   ```
 
-It will take some time as it is a very large package so have some patience folks :)
-
-Ok, so now that our dependencies have been installed, let's talk about how we will be going about making our program recognize human faces.
-
 We will be using a pre-trained model from OpenCV's official repositories which is basically an **XML** file containing rules and instrunctions for how the model should work on a specific image or video.
 
 The thing that the model uses is something known as **Haar-cascades**
@@ -225,11 +219,8 @@ Naturally, all images with a face or faces will have somewhat similar edges and 
 A very detailed explanation on what exactly happens in Haar-cascade is given here 👇🏻
 https://towardsdatascience.com/face-detection-with-haar-cascade-727f68dafd08
 
-As you may have guessed, for these kind of applications we need HUGE amounts of data... and am talking about datasets more than 5GBs or so, or else our model won't predict accurately.
 
 ```Remember: the more the data, the more accurate our model becomes```
-
-But fortunately, OpenCV already has a trained model which we will be using.
 
 Let's get into the code!
 
@@ -284,19 +275,12 @@ video_capture.release()
 cv2.destroyAllWindows()
 ```
 
-So, now that we have implemented our face detection program, let's have a 10 minutes break before we move on to making our own virtual assistant! Till then, you may clarify your doubts :")
-
+So, now that we have implemented our face detection program, let's have a 10 minutes break before we move on to making our own virtual assistant! 
 <br>
 
 ## **VIRTUAL ASSISTANT**
 
-The most distinct feature of a humanoid is that it behaves somewhat like a human and what better way is there to show something to be similar to humans than being able to talk and speak in an intelligent way.
-
-We all have interacted with virtual assitants like Google assistant, Amazon Echo, Microsoft Cortana. etc., so let's dive right in to making one basic virtual assistant of our own that can tell us the weather, open up YouTube, Chrome, Gmail, tell us jokes, fetch us news articles and even search up basic definitions from Wikipedia!
-
-I hope you all have your virtual environments up and activated because for this application we will need to download a bunch of modules :P 
-
-It's a fairly large code so I'll be copy pasting from the github repo and I hope y'all can access it :)
+The most distinct feature of a humanoid is that it behaves somewhat like a human and what better way is there to show something to be similar to humans than being able to talk and speak in an intelligent way. let's dive right in to making one basic virtual assistant of our own that can tell us the weather, open up YouTube, Chrome, Gmail, tell us jokes, fetch us news articles and even search up basic definitions from Wikipedia!
 
 The following command will download all the required libraries and while it takes some time let me explain what each library does
 
@@ -504,9 +488,7 @@ time.sleep(3)
 
 So there you go! We have given our humanoid the ability to understand us on a very very basic level and do some tasks based on our instructions. You can add uncountable number of further features using the thousands of python libraries that are available on the net and hundreds of APIs to integrate some very advanced features like make calls/ send sms, compute mathematical and geographical questions, sing a song for you and even take a selfie and shut down your computer for you!
 
-So, that's it for this workshop! We obviously haven't shown you how to make your own body, but have some patience for **Prismanoid v2.0** where we gonna explain how you can design the body of a full-fledged humanoid!
-Stay tuned to our instagram channel for more awesome workshops like this one and till then, stay safe and keep innovating!
-<br>
+
 ## 🔗 Links
 
 [![website](https://img.shields.io/badge/website-000000?style=for-the-badge&logo=About.me&logoColor=white)](https://humanoidxvitcc.in)
